@@ -13,7 +13,7 @@ const Products=require("./models/Productsschema");
 
 const DefaultData=require("./DefaultData");
 
-const port = process.env.PORT || 80;
+const port = 80;
 
 
 
