@@ -10,8 +10,10 @@ const cors =require("cors");
 
 
 const Products=require("./models/Productsschema");
-const port= 80;
+
 const DefaultData=require("./DefaultData");
+
+const port = process.env.PORT || 80;
 
 
 
