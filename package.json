@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
-  "proxy": "https://amazonclonie.netlify.app",
+  "proxy": "https://stalwart-melomakarona-0a46a7.netlify.app",
   "keywords": [],
   "author": "",
   "license": "ISC",
