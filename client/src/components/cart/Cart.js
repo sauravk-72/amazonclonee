@@ -20,7 +20,7 @@ const Cart = () => {
   console.log(inddata);
 
   const getinddata = async () => {
-    const res = await fetch(`/getproductsone/${id}`, {
+    const res = await fetch(`https://amazonclonee.onrender.com/getproductsone/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -49,7 +49,7 @@ const Cart = () => {
   
   // add cart function
   const addtocart = async (id) => {
-    const checkres = await fetch(`/addcart/${id}`, {
+    const checkres = await fetch(`https://amazonclonee.onrender.com/addcart/${id}`, {
       method: "POST",
       headers: {
         Accept:"application/json",
