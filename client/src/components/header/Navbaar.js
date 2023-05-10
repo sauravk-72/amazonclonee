@@ -35,7 +35,7 @@ const Navbaar = () => {
     const [dropen, setDropen] = useState(false)
 
     const getdetailvaliduser = async () => {
-        const res = await fetch("/validuser", {
+        const res = await fetch("https://amazonclonee.onrender.com/validuser", {
             method: "GET",
             headers: {
                 Accept: "application/json",
