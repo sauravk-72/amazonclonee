@@ -18,7 +18,7 @@ const Buynow = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            credentials:"include",
+            credentials:"include",origin:"true",withCredntials: "true",
         });
 
         const data = await res.json();

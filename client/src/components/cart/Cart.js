@@ -52,13 +52,14 @@ const Cart = () => {
     const checkres = await fetch(`https://amazonclonee.onrender.com/addcart/${id}`, {
       method: "POST",
       headers: {
+        
         Accept:"application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         inddata
       }),
-      credentials:"include",
+      credentials:"include",origin:"true"
     });
 
 

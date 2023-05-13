@@ -35,7 +35,7 @@ const Sign_in = () => {
 
         const res = await fetch("https://amazonclonee.onrender.com/login", {
             method: "POST",
-            credentials:"include",
+            credentials:"include",origin:"true",withCredntials: "true",
             headers: {
                
                 "Content-Type": "application/json"
