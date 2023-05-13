@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
-  "proxy": "https://bright-cendol-ffd324.netlify.app/",
+  "proxy": "https://bright-cendol-ffd324.netlify.app",
   "keywords": [],
   "author": "",
   "license": "ISC",
