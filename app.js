@@ -18,7 +18,7 @@ const port = process.env.PORT || 80;
 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({credentials: true, origin: 'https://amazonclonie.netlify.app'}));
 app.use(Router);
 app.use(cookieParser());
 
