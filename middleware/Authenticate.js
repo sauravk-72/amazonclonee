@@ -4,7 +4,7 @@ const secretKey = process.env.KEY;
 
 const Authenticate = async(req,res,next)=>{
     try {
-        const token = req.headers.authorization;
+        const token = req.headers.Authorization;
 
         const verifyToken = jwt.verify(token,secretKey);
         console.log(verifyToken);
