@@ -18,7 +18,7 @@ const port = process.env.PORT || 80;
 
 
 app.use(express.json());
-app.use(cors({credentials: true, origin: 'https://bright-cendol-ffd324.netlify.app'}));
+app.use(cors({credentials: true, origin: 'https://regal-mandazi-fc0bf7.netlify.app'}));
 app.use(Router);
 app.use(cookieParser());
 

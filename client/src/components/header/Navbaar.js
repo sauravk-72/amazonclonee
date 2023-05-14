@@ -35,11 +35,13 @@ const Navbaar = () => {
     const [dropen, setDropen] = useState(false)
 
     const getdetailvaliduser = async () => {
+        let token=localStorage.getItem("usersdatatoken");
         const res = await fetch("https://amazonclonee.onrender.com/validuser", {
             method: "GET",
             headers: {
                 Accept: "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization":token
             },
             credentials:"include",origin:"true",withCredntials: "true",
         });

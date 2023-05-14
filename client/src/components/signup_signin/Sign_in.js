@@ -62,6 +62,7 @@ const Sign_in = () => {
             toast.success("user valid",{
                 position: "top-center",
             })
+            localStorage.setItem("usersdatatoken",res.result.token)
             setData({...logdata,email:"",password:""});
         }
     }

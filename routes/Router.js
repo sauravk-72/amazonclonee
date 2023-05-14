@@ -133,8 +133,11 @@ Router.post("/login", async (req, res,) => {
                 expires: new Date(Date.now() + 90000000),
                 httpOnly: "true"
             })
+            const result={
+                userlogin,token
+            }
 
-            res.status(201).json(userlogin);
+            res.status(201).json({status:201,result});
         }
 
 
