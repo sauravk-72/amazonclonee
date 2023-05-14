@@ -137,7 +137,7 @@ Router.post("/login", async (req, res,) => {
                 userlogin,token
             }
 
-            res.status(201).json({status:201,result});
+            res.status(201).json(result);
         }
     }
 
