@@ -112,7 +112,7 @@ Router.post("/login", async (req, res,) => {
     try {
         const userlogin = await USER.findOne({ email: email });
         console.log(userlogin + "user value");
-
+        if(userlogin){
 
         const isMatch = await bcrypt.compare(password, userlogin.password);
         console.log(isMatch + "pass match");
@@ -139,7 +139,7 @@ Router.post("/login", async (req, res,) => {
 
             res.status(201).json({status:201,result});
         }
-
+    }
 
     } catch (error) {
         res.status(400).json({ error: "invalid detials user" })
