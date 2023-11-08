@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const jwt=require("jsonwebtoken");
 const secretKey=process.env.KEY;
 
-
 const Userschema = new mongoose.Schema({
     fname: {
         type: String,
@@ -60,7 +59,7 @@ Userschema.pre("save", async function (next) {
 });
 
 // token generator
-Userschema.methods.generateAuthtokenn =async function(){
+Userschema.methods.generateAuthtoken=async function(){
     try{
         let token=jwt.sign({_id:this._id},secretKey);
         this.tokens =this.tokens.concat({token:token});
@@ -70,6 +69,7 @@ Userschema.methods.generateAuthtokenn =async function(){
         console.log(error);
     }
 }
+
 
 
 // add tocart data

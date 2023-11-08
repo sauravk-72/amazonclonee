@@ -30,7 +30,7 @@ const Address = () => {
         e.preventDefault();
         const { fname, email, mobile, address, state,city,zip } = adata;
 
-        const res = await fetch("https://amazonclonee.onrender.com/address", {
+        const res = await fetch("address", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

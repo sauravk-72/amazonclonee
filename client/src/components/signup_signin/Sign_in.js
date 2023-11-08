@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { LoginContext } from '../context/ContextProvider';
 
 
+
+
 const Sign_in = () => {
 
     const [logdata, setData] = useState({
@@ -33,7 +35,7 @@ const Sign_in = () => {
 
         const { email, password } = logdata;
 
-        const res = await fetch("https://amazonclonee.onrender.com/login", {
+        const res = await fetch("/login", {
             method: "POST",
             credentials:"include",origin:"true",withCredntials: "true",
             headers: {
@@ -46,23 +48,24 @@ const Sign_in = () => {
            
             
         });
+       
 
 
-        const data = await res.json();
-        console.log(data);
+        const json = await res.json();
+        console.log(json)
 
-        if(res.status == 400 || !data){
+        if(res.status == 400 || !json){
             console.log("invalid details");
             toast.warn("invalid details",{
                 position: "top-center",
             })
         }else{
             console.log("data valid");
-            setAccount(data)
+            localStorage.setItem("token",json.authtoken)
+            setAccount(json)
             toast.success("user valid",{
                 position: "top-center",
             })
-            localStorage.setItem("usersdatatoken",res.result.token)
             setData({...logdata,email:"",password:""});
         }
     }

@@ -1,6 +1,8 @@
 const express = require("express");
 const Router = new express.Router();
 const Products = require("../models/Productsschema");
+var jwt = require('jsonwebtoken');
+const secretKey= process.env.KEY;
 
 const USER = require("../models/Userschema");
 const Authenticate = require("../middleware/Authenticate");
@@ -59,11 +61,13 @@ Router.post("/register", async (req, res) => {
             });
 
 
-
             const storedata = await finalUser.save();
-            console.log(storedata);
 
-            res.status(201).json(storedata);
+            const authtoken = jwt.sign(storedata, secretKey);
+            success = true;
+
+            res.json({ success, authtoken })
+
         }
 
 
@@ -112,34 +116,33 @@ Router.post("/login", async (req, res,) => {
     try {
         const userlogin = await USER.findOne({ email: email });
         console.log(userlogin + "user value");
-        if(userlogin){
+        if (userlogin) {
 
-        const isMatch = await bcrypt.compare(password, userlogin.password);
-        console.log(isMatch + "pass match");
-
-
+            const isMatch = await bcrypt.compare(password, userlogin.password);
+            console.log(isMatch + "pass match");
 
 
 
 
-        if (!isMatch) {
-            res.status(400).json({ error: " Matchinvalid detials" });
-        } else {
-            // token genrate
-            const token = await userlogin.generateAuthtokenn();
-            console.log(token);
 
-            res.cookie("Amazonweb", token, {
-                expires: new Date(Date.now() + 90000000),
-                httpOnly: "true"
-            })
-            const result={
-                userlogin,token
+
+            if (!isMatch) {
+                res.status(400).json({ error: " Matchinvalid detials" });
+            } else {
+                // token genrate
+                //const token = await userlogin.generateAuthtoken();
+                //console.log(token);
+
+                const data = {
+                    userlogin, token
+                }
+
+                const authtoken = jwt.sign(data, secretKey);
+                success = true;
+
+                res.json({ success, authtoken })
             }
-
-            res.status(201).json(result);
         }
-    }
 
     } catch (error) {
         res.status(400).json({ error: "invalid detials user" })
@@ -191,6 +194,9 @@ Router.get("/validuser", Authenticate, async (req, res) => {
     try {
         const validuserone = await USER.findOne({ _id: req.userID });
         res.status(201).json(validuserone);
+
+
+
     } catch (error) {
         console.log("error" + error)
     }
@@ -225,7 +231,7 @@ Router.get("/lougout", Authenticate, (req, res) => {
         });
 
 
-        res.clearCookie("Amazonweb", { path: "/" });
+        //res.clearCookie("Amazonweb", { path: "/" });
 
         req.rootUser.save();
         res.status(201).json(req.rootUser.tokens);

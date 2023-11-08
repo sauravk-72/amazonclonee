@@ -36,12 +36,12 @@ const Navbaar = () => {
 
     const getdetailvaliduser = async () => {
         let token=localStorage.getItem("usersdatatoken");
-        const res = await fetch("https://amazonclonee.onrender.com/validuser", {
+        const res = await fetch("/validuser", {
             method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                "Authorization":token
+                "Authorization":token,
             },
             credentials:"include",origin:"true",withCredntials: "true",
         });
@@ -67,7 +67,7 @@ const Navbaar = () => {
     }
 
     const logoutuser = async () => {
-        const res2 = await fetch("https://amazonclonee.onrender.com/lougout", {
+        const res2 = await fetch("/lougout", {
             method: "GET",
             headers: {
                 Accept: "application/json",
